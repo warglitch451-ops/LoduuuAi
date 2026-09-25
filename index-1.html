@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<title>ForgeFlow AI — Agency Website Production</title>
+<style>
+:root{--bg:#080b14;--panel:#101624;--panel2:#151c2c;--line:#253047;--text:#f5f7fb;--muted:#96a2b8;--brand:#7c5cff;--brand2:#5eead4;--danger:#fb7185;--ok:#34d399;--shadow:0 20px 60px rgba(0,0,0,.35)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(1000px 500px at 70% -10%,#25204d 0%,transparent 60%),var(--bg);color:var(--text)}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.side{border-right:1px solid var(--line);background:rgba(8,11,20,.86);backdrop-filter:blur(18px);padding:18px 14px;position:sticky;top:0;height:100vh}.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;padding:8px 10px 22px}.logo{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:#081018;font-weight:900}.workspace{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:11px;margin-bottom:18px}.workspace small{display:block;color:var(--muted);font-size:11px;margin-bottom:3px}.workspace strong{font-size:13px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#aeb8ca;text-align:left;padding:11px 12px;border-radius:10px}.nav button:hover,.nav button.active{background:var(--panel2);color:#fff}.nav button.active{box-shadow:inset 2px 0 0 var(--brand)}.sidebottom{position:absolute;bottom:16px;left:14px;right:14px}.usage{border:1px solid var(--line);background:var(--panel);padding:12px;border-radius:14px}.usage-row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px}.bar{height:6px;background:#20283a;border-radius:20px;overflow:hidden}.bar i{display:block;width:28%;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2))}
+.main{min-width:0}.top{height:70px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;background:rgba(8,11,20,.72);backdrop-filter:blur(18px);z-index:10}.crumb{color:var(--muted);font-size:13px}.topright{display:flex;gap:9px;align-items:center}.avatar{width:34px;height:34px;border-radius:50%;background:#222b40;display:grid;place-items:center;font-size:12px;font-weight:700}.btn{border:1px solid var(--line);background:var(--panel);color:#fff;border-radius:10px;padding:9px 13px;font-weight:650}.btn:hover{border-color:#45516a;background:#182033}.btn.primary{border-color:transparent;background:linear-gradient(135deg,#7c5cff,#6047db);box-shadow:0 8px 25px rgba(124,92,255,.22)}.btn.success{background:#123a31;border-color:#1e6958;color:#a7f3d0}.btn.danger{color:#fecdd3}.content{padding:28px;max-width:1500px;margin:auto}.hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:24px}.hero h1{font-size:30px;margin:0 0 7px;letter-spacing:-.8px}.hero p{margin:0;color:var(--muted);max-width:650px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:linear-gradient(180deg,rgba(18,24,38,.94),rgba(12,17,28,.94));border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:var(--shadow)}.stat small{color:var(--muted);display:block}.stat strong{display:block;font-size:27px;margin-top:7px}.stat span{font-size:12px;color:#72e6c2}.section{margin-top:18px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.section-title h2{font-size:16px;margin:0}.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.project{padding:0;overflow:hidden}.thumb{height:150px;background:linear-gradient(135deg,#1c2540,#3c2b72);display:flex;align-items:center;justify-content:center;position:relative}.thumb .site{width:72%;height:76%;border-radius:8px;background:#f7f7f8;box-shadow:0 15px 35px rgba(0,0,0,.35);padding:9px;color:#111}.fake-nav{height:8px;background:#ddd;border-radius:5px;width:45%;margin-bottom:10px}.fake-hero{height:34px;border-radius:5px;background:linear-gradient(90deg,#d9d9df,#f0f0f2);margin-bottom:8px}.fake-lines{height:5px;background:#ddd;border-radius:4px;margin:5px 0}.project-body{padding:15px}.project-body h3{margin:0 0 5px;font-size:15px}.meta{color:var(--muted);font-size:12px}.tags{display:flex;gap:6px;margin-top:11px;flex-wrap:wrap}.tag{font-size:10px;border:1px solid var(--line);border-radius:20px;padding:4px 7px;color:#b8c2d4}.modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal.open{display:flex}.modalbox{width:min(920px,100%);max-height:92vh;overflow:auto;background:#0e1422;border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 100px rgba(0,0,0,.55)}.modalhead{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.modalhead h2{margin:0;font-size:17px}.close{background:transparent;border:0;color:#9ba7ba;font-size:22px}.modalbody{padding:20px}.label{font-size:12px;color:#b6c0d1;margin:0 0 7px;display:block}.input,.textarea,.select{width:100%;border:1px solid var(--line);background:#0a0f1a;color:#fff;border-radius:11px;padding:11px 12px;outline:0}.input:focus,.textarea:focus{border-color:#6652d8;box-shadow:0 0 0 3px rgba(124,92,255,.12)}.textarea{min-height:130px;resize:vertical}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.full{grid-column:1/-1}.modalfoot{padding:15px 20px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:8px}.generator{display:none}.generator.show{display:block}.steps{display:grid;gap:9px;margin:15px 0}.step{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--line);border-radius:10px;color:#68758a}.step.on{color:#fff;background:#121a2a}.dot{width:9px;height:9px;border-radius:50%;background:#374257}.step.on .dot{background:var(--brand);box-shadow:0 0 14px var(--brand)}.preview{display:none;height:100vh;position:fixed;inset:0;background:#fff;z-index:60}.preview.open{display:block}.previewbar{height:55px;background:#0c1220;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 12px}.previewbar .devices{display:flex;gap:5px}.previewbar button{background:#141d2d;color:#dce4f2;border:1px solid #2b3850;border-radius:8px;padding:7px 10px}.framewrap{height:calc(100vh - 55px);background:#e8ebf0;display:flex;justify-content:center;align-items:flex-start;padding:20px;overflow:auto}.siteframe{background:white;width:100%;height:100%;max-width:1440px;border-radius:8px;overflow:auto;color:#111;transition:.25s}.siteframe.tablet{max-width:768px}.siteframe.mobile{max-width:390px}.generated{min-height:100%;font-family:Inter,Arial,sans-serif}.generated .g-nav{height:64px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee}.generated .g-logo{font-weight:900;font-size:18px}.generated .g-links{display:flex;gap:22px;font-size:13px;color:#555}.generated .g-hero{padding:90px 8%;background:linear-gradient(135deg,#f5f1ff,#eefcf9);display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}.generated h1{font-size:clamp(38px,5vw,68px);line-height:1.02;letter-spacing:-2px;margin:0 0 20px}.generated p{color:#606878;line-height:1.65}.generated .g-cta{display:inline-block;margin-top:18px;background:#171329;color:white;padding:13px 18px;border-radius:10px;font-weight:700}.generated .g-art{min-height:280px;border-radius:25px;background:linear-gradient(135deg,#7458ff,#5eead4);box-shadow:20px 25px 60px rgba(70,50,130,.25)}.generated .g-section{padding:65px 8%}.generated .g-section h2{font-size:34px;margin:0 0 28px}.generated .g-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.generated .g-card{border:1px solid #e7e8ee;border-radius:16px;padding:22px}.generated .g-card b{font-size:17px}.generated .g-footer{padding:30px 8%;background:#111522;color:white}.generated .g-mobile-menu{display:none}.empty{padding:45px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:15px}.activity{display:grid;gap:9px}.activity-item{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #1d2638;font-size:13px}.activity-item:last-child{border:0}.activity-item span{color:var(--muted)}.toast{position:fixed;right:20px;bottom:20px;background:#101827;border:1px solid #31405a;color:#fff;padding:12px 15px;border-radius:11px;box-shadow:var(--shadow);transform:translateY(20px);opacity:0;pointer-events:none;transition:.25s;z-index:100}.toast.show{transform:none;opacity:1}.mobile-nav{display:none}
+@media(max-width:1000px){.app{grid-template-columns:76px 1fr}.side{padding:14px 9px}.brand span,.workspace,.nav button span,.usage{display:none}.brand{justify-content:center}.nav button{text-align:center}.grid{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.app{display:block}.side{height:auto;position:fixed;bottom:0;left:0;right:0;top:auto;border-right:0;border-top:1px solid var(--line);z-index:30;padding:7px;background:rgba(8,11,20,.94)}.brand,.workspace,.sidebottom{display:none}.nav{display:flex;justify-content:space-around}.nav button{font-size:10px;padding:8px}.nav button span{display:block}.main{padding-bottom:60px}.top{padding:0 14px;height:62px}.content{padding:18px 14px}.hero{display:block}.hero .btn{margin-top:14px}.grid{grid-template-columns:1fr 1fr}.project-grid{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.generated .g-hero{grid-template-columns:1fr;padding:55px 7%}.generated .g-links{display:none}.generated .g-mobile-menu{display:block}.generated .g-cards{grid-template-columns:1fr}.generated .g-section{padding:45px 7%}.generated h1{letter-spacing:-1.3px}.previewbar .devices{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="brand"><div class="logo">F</div><span>ForgeFlow AI</span></div>
+  <div class="workspace"><small>WORKSPACE</small><strong>Northstar Studio</strong></div>
+  <nav class="nav">
+    <button class="active" data-page="dashboard">◈ <span>Dashboard</span></button>
+    <button data-page="projects">▣ <span>Projects</span></button>
+    <button data-page="clients">♙ <span>Clients</span></button>
+    <button data-page="activity">◷ <span>Activity</span></button>
+    <button data-page="settings">⚙ <span>Settings</span></button>
+  </nav>
+  <div class="sidebottom"><div class="usage"><div class="usage-row"><span>AI usage</span><b>28%</b></div><div class="bar"><i></i></div><small style="color:#718098;display:block;margin-top:8px">14 / 50 generations</small></div></div>
+</aside>
+<main class="main">
+<header class="top"><div class="crumb" id="crumb">Workspace / Dashboard</div><div class="topright"><button class="btn" id="demoBtn">View demo</button><button class="btn primary" id="newBtn">+ New project</button><div class="avatar">MP</div></div></header>
+<div class="content" id="content"></div>
+</main>
+</div>
+
+<div class="modal" id="projectModal">
+<div class="modalbox">
+ <div class="modalhead"><h2>Create AI website</h2><button class="close" id="closeModal">×</button></div>
+ <div class="modalbody">
+  <div class="formgrid">
+   <div><label class="label">Client / business name</label><input class="input" id="clientName" placeholder="e.g. Nova Dental"></div>
+   <div><label class="label">Project name</label><input class="input" id="projectName" placeholder="e.g. Nova Dental Website"></div>
+   <div class="full"><label class="label">Website brief</label><textarea class="textarea" id="brief" placeholder="Describe the business, audience, style, pages and goals..."></textarea></div>
+  </div>
+  <div class="generator" id="generator"><div class="steps" id="steps"></div></div>
+ </div>
+ <div class="modalfoot"><button class="btn" id="cancelBtn">Cancel</button><button class="btn primary" id="generateBtn">Generate website</button></div>
+</div>
+</div>
+
+<div class="preview" id="preview">
+ <div class="previewbar"><div><b>ForgeFlow Preview</b><span style="color:#718098;margin-left:8px;font-size:12px" id="previewName"></span></div><div class="devices"><button data-device="desktop">Desktop</button><button data-device="tablet">Tablet</button><button data-device="mobile">Mobile</button></div><button id="closePreview">Close</button></div>
+ <div class="framewrap"><div class="siteframe" id="siteframe"></div></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const KEY="forgeflow_projects_v1";
+const state={projects:JSON.parse(localStorage.getItem(KEY)||"[]"),page:"dashboard",current:null};
+const $=s=>document.querySelector(s);
+function save(){localStorage.setItem(KEY,JSON.stringify(state.projects))}
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2400)}
+function esc(v){return String(v||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function seed(){
+ if(state.projects.length)return;
+ state.projects=[{id:"demo",client:"Aurelia Skin",name:"Aurelia Premium E-commerce",brief:"Premium skincare ecommerce brand",status:"Published",updated:"Today",pages:5,version:3}];
+ save();
+}
+function stats(){
+ return `<div class="grid">
+ <div class="card stat"><small>Active projects</small><strong>${state.projects.filter(p=>p.status!=="Published").length+2}</strong><span>↑ production pipeline</span></div>
+ <div class="card stat"><small>Published websites</small><strong>${state.projects.filter(p=>p.status==="Published").length+4}</strong><span>↑ this month</span></div>
+ <div class="card stat"><small>Client approvals</small><strong>7</strong><span>3 awaiting review</span></div>
+ <div class="card stat"><small>AI generations</small><strong>14</strong><span>28% of monthly limit</span></div>
+ </div>`
+}
+function projectCard(p){
+ return `<div class="card project"><div class="thumb"><div class="site"><div class="fake-nav"></div><div class="fake-hero"></div><div class="fake-lines"></div><div class="fake-lines" style="width:65%"></div></div></div><div class="project-body"><h3>${esc(p.name)}</h3><div class="meta">${esc(p.client)} · ${esc(p.updated)}</div><div class="tags"><span class="tag">${esc(p.status)}</span><span class="tag">${p.pages||5} pages</span><span class="tag">v${p.version||1}</span></div><div style="display:flex;gap:7px;margin-top:13px"><button class="btn" onclick="openPreview('${p.id}')">Preview</button><button class="btn" onclick="editProject('${p.id}')">Edit</button></div></div></div>`
+}
+function dashboard(){
+ $("#crumb").textContent="Workspace / Dashboard";
+ $("#content").innerHTML=`<div class="hero"><div><h1>Build client websites at AI speed.</h1><p>Generate, refine, review and prepare production websites from one agency workspace.</p></div><button class="btn primary" onclick="openModal()">+ Create project</button></div>${stats()}<div class="section"><div class="section-title"><h2>Recent projects</h2><button class="btn" onclick="setPage('projects')">View all</button></div><div class="project-grid">${state.projects.slice(0,3).map(projectCard).join("")}</div></div><div class="section"><div class="section-title"><h2>Recent activity</h2></div><div class="card activity"><div class="activity-item"><b>Website approved</b><span>Aurelia Skin · 12 min ago</span></div><div class="activity-item"><b>AI generation completed</b><span>Nova Dental · 42 min ago</span></div><div class="activity-item"><b>Client invited</b><span>Northstar Fitness · 2h ago</span></div></div></div>`
+}
+function projects(){
+ $("#crumb").textContent="Workspace / Projects";
+ $("#content").innerHTML=`<div class="hero"><div><h1>Projects</h1><p>Every client website in one production pipeline.</p></div><button class="btn primary" onclick="openModal()">+ New project</button></div><div class="project-grid">${state.projects.map(projectCard).join("")}</div>`
+}
+function clients(){
+ $("#crumb").textContent="Workspace / Clients";
+ $("#content").innerHTML=`<div class="hero"><div><h1>Clients</h1><p>Keep client context attached to every website project.</p></div><button class="btn primary" onclick="toast('Client creation is ready in the project flow.')">+ New client</button></div><div class="card"><div class="activity">${["Aurelia Skin","Nova Dental","Northstar Fitness","Vertex Architecture"].map((n,i)=>`<div class="activity-item"><b>${n}</b><span>${i+1} active project${i?"s":""} · Managed by Northstar Studio</span></div>`).join("")}</div></div>`
+}
+function activity(){
+ $("#crumb").textContent="Workspace / Activity";
+ $("#content").innerHTML=`<div class="hero"><div><h1>Activity</h1><p>A transparent history of your production workspace.</p></div></div><div class="card activity">${["AI brief analyzed","Responsive QA completed","Version 3 created","Client review link generated","Project deployed"].map((x,i)=>`<div class="activity-item"><b>${x}</b><span>${i*18+6} min ago</span></div>`).join("")}</div>`
+}
+function settings(){
+ $("#crumb").textContent="Workspace / Settings";
+ $("#content").innerHTML=`<div class="hero"><div><h1>Workspace settings</h1><p>Agency identity and product configuration.</p></div><button class="btn primary" onclick="toast('Settings saved')">Save changes</button></div><div class="card"><div class="formgrid"><div><label class="label">Agency name</label><input class="input" value="Northstar Studio"></div><div><label class="label">Workspace URL</label><input class="input" value="northstar"></div><div><label class="label">White-label product name</label><input class="input" value="ForgeFlow AI"></div><div><label class="label">Default AI model</label><select class="select"><option>Production model</option><option>Fast model</option></select></div></div></div>`
+}
+function setPage(p){state.page=p;document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===p));({dashboard,projects,clients,activity,settings}[p]||dashboard)()}
+function openModal(){$("#projectModal").classList.add("open");$("#clientName").focus()}
+function closeModal(){$("#projectModal").classList.remove("open");$("#generator").classList.remove("show");$("#steps").innerHTML="";$("#generateBtn").disabled=false}
+function generate(){
+ const client=$("#clientName").value.trim()||"New Client", name=$("#projectName").value.trim()||client+" Website", brief=$("#brief").value.trim()||"Create a premium modern business website.";
+ const p={id:"p_"+Date.now(),client,name,brief,status:"Generating",updated:"Just now",pages:5,version:1};state.projects.unshift(p);save();
+ $("#generateBtn").disabled=true;$("#generator").classList.add("show");
+ const labels=["Understanding client brief","Creating sitemap","Building design system","Generating content and components","Running responsive quality checks"];
+ $("#steps").innerHTML=labels.map((x,i)=>`<div class="step" id="step${i}"><i class="dot"></i>${x}</div>`).join("");
+ labels.forEach((_,i)=>setTimeout(()=>{if(i)$("#step"+(i-1)).classList.remove("on");$("#step"+i).classList.add("on")},i*650));
+ setTimeout(()=>{p.status="Draft";p.updated="Just now";p.version=2;save();closeModal();setPage("projects");toast("Website generated and saved as a new project.");openPreview(p.id)},labels.length*650+450)
+}
+function editProject(id){const p=state.projects.find(x=>x.id===id);if(!p)return;state.current=p;openPreview(id)}
+function openPreview(id){
+ const p=state.projects.find(x=>x.id===id);if(!p)return;
+ state.current=p;$("#previewName").textContent="· "+p.name;$("#siteframe").className="siteframe";$("#siteframe").innerHTML=siteTemplate(p);$("#preview").classList.add("open")
+}
+function siteTemplate(p){
+ const title=esc(p.client), brief=esc(p.brief||"A modern business built for growth.");
+ return `<div class="generated"><nav class="g-nav"><div class="g-logo">${title}</div><div class="g-links"><span>Services</span><span>About</span><span>Work</span><span>Contact</span></div><div class="g-mobile-menu">☰</div></nav><section class="g-hero"><div><div style="font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:#6954d9;margin-bottom:13px">Built with ForgeFlow AI</div><h1>Turn your next idea into something people remember.</h1><p>${brief} We combine a clear strategy, premium design and a frictionless digital experience to help ambitious brands move forward.</p><a class="g-cta" href="#contact">Start a conversation →</a></div><div class="g-art"></div></section><section class="g-section"><h2>Designed around your goals.</h2><div class="g-cards"><div class="g-card"><b>01 — Strategy</b><p>Clear positioning and a structure built around what your customers need to understand.</p></div><div class="g-card"><b>02 — Experience</b><p>Responsive interfaces that feel polished across mobile, tablet and desktop.</p></div><div class="g-card"><b>03 — Growth</b><p>Strong calls to action, fast pages and content that turns attention into action.</p></div></div></section><section class="g-section" style="background:#f7f7fa"><h2>Ready for the next step?</h2><p>Let's create an experience that makes your business impossible to ignore.</p><a class="g-cta" href="#contact">Book a consultation →</a></section><footer class="g-footer" id="contact"><b>${title}</b><p style="color:#aeb6c7">A production-ready digital experience.</p></footer></div>`
+}
+document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>setPage(b.dataset.page)));
+$("#newBtn").onclick=openModal;$("#demoBtn").onclick=()=>openPreview("demo");$("#closeModal").onclick=closeModal;$("#cancelBtn").onclick=closeModal;$("#generateBtn").onclick=generate;$("#closePreview").onclick=()=>$("#preview").classList.remove("open");
+document.querySelectorAll("[data-device]").forEach(b=>b.onclick=()=>$("#siteframe").className="siteframe "+(b.dataset.device==="desktop"?"":b.dataset.device));
+seed();dashboard();
+</script>
+</body>
+</html>
